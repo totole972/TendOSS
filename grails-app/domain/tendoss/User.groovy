@@ -6,6 +6,7 @@ class User {
 
     String username
     String password
+    String emailAddress
     boolean enabled = true
     boolean accountExpired
     boolean accountLocked
@@ -13,13 +14,17 @@ class User {
 
     static transients = ['springSecurityService']
 
+    static hasMany = [answers : Answer, tenders: Tender, votes: Vote, skills: UserTechno]
+
     static constraints = {
         username blank: false, unique: true
-        password blank: false
+        password blank: false, nullable : false
+        emailAddress nullable: false, blank: false, email: true
     }
 
     static mapping = {
         password column: '`password`'
+        version(false)
     }
 
     Set<Role> getAuthorities() {
