@@ -14,7 +14,7 @@ class User {
 
     static transients = ['springSecurityService']
 
-    static hasMany = [answers : Answer, tenders: Tender, votes: Vote, skills: UserTechno]
+    static hasMany = [answers : Answer, proposals: Tender, assignedTenders: Tender,  votes: Vote, skills: UserTechno]
 
     static constraints = {
         username blank: false, unique: true

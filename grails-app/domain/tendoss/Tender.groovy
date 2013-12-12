@@ -11,7 +11,7 @@ class Tender {
 
 
     static belongsTo = [author: User]
-    static hasMany = [answers: Answer, attachements: File, requirements: TenderTechno]
+    static hasMany = [answers: Answer, attachements: File, requirements: TenderTechno, participants: User]
 
     static constraints = {
         name nullable: false, blank:false
