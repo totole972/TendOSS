@@ -8,6 +8,7 @@ class Tender {
     Date submissionDate
     Date answerDeadline
     Date delivaryDeadline
+    Boolean closed = false
 
 
     static belongsTo = [author: User]
@@ -16,6 +17,7 @@ class Tender {
     static constraints = {
         name nullable: false, blank:false
         submissionDate nullable: false, blank: false
+        closed nullable: false, blank: false
     }
 
     static mapping = {
