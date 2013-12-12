@@ -10,8 +10,7 @@ class Tender {
     Date delivaryDeadline
     Boolean closed = false
 
-
-    static belongsTo = [author: User]
+    static belongsTo = [User]
     static hasMany = [answers: Answer, attachements: File, requirements: TenderTechno, participants: User]
 
     static constraints = {
