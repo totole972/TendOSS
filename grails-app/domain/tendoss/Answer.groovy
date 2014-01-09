@@ -7,7 +7,7 @@ class Answer {
 
 
 
-	// Test Cloudbees building automatically after a push.
+
     static belongsTo = [author: User]
     static hasMany = [attachements: File, answers: Answer, votes: Vote]
 
