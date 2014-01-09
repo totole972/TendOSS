@@ -11,7 +11,7 @@ class UserController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     /**
-     * show Created Users
+     * show list of Created Users
      * @param max
      * @return
      */
@@ -109,5 +109,9 @@ class UserController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+
+    def _personnalform(User userInstance){
+        respond User.get(params.userInstance)
     }
 }

@@ -7,15 +7,15 @@
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#edit-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+        <!--<a href="#edit-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
-		</div>
-		<div id="edit-user" class="content scaffold-edit" role="main">
+		</div>-->
+		<div id="edit-user" class="content scaffold-edit" role="main" style="width: 25%;margin: auto">
 			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
@@ -27,12 +27,15 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:userInstance, action:'update']" method="PUT" >
+			<g:form url="[resource:userInstance, action:'update']" method="PUT"  style=" align-content: center">
 				<g:hiddenField name="version" value="${userInstance?.version}" />
-				<fieldset class="form">
-					<g:render template="form"/>
+				<fieldset class="form" style="border: 0px none">
+                    <div id="user_personnal_information">
+                        <g:render template="personnalform" />
+                    </div>
+                    <g:render template="tendform"/>
 				</fieldset>
-				<fieldset class="buttons">
+				<fieldset class="buttons" style="border: 0px none">
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 				</fieldset>
 			</g:form>

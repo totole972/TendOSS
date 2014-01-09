@@ -1,3 +1,4 @@
+<%@ page import="tendoss.User; grails.plugin.springsecurity.SpringSecurityService" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html lang="fr" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="fr" class="no-js ie7"> <![endif]-->
@@ -12,27 +13,37 @@
 		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
-         <r:require modules="bootstrap"/>
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 		<g:layoutHead/>
 		<g:javascript library="application"/>		
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="grailsLogo">
-            <a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a>
+		<div id="Logo">
+            <a href="${createLink(uri: '/')}"><img src="${resource(dir: 'images', file: 'TendOSS_logo.png')}" alt="TendOSS"/></a>
 
-            <span id="logger">
+            <span id="logger" style="float: right;margin-right: 10%;">
                 <sec:ifLoggedIn>
                     Welcome <sec:username/>
-                    <a href="${createLink(controller:"logout")}">Logout</a>
+                    <a href="${createLink(controller:"logout")}">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="${createLink(controller:"user", action: 'edit', id: sec.loggedInUserInfo(field: 'id'))}">Edit profile</a>
                 </sec:ifLoggedIn>
                 <sec:ifNotLoggedIn>
-                    <a href="${createLink(controller:"login" ,action: 'auth')}">Login</a>
+                    <a href="${createLink(controller:"login" ,action: 'auth')}">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="${createLink(controller:"User" ,action: 'create')}">Sign up</a>
+
                 </sec:ifNotLoggedIn>
             </span>
         </div>
 
-		<g:layoutBody/>
+        <sec:ifNotLoggedIn>
+            <!--TODO :  render login-->
+
+            <g:layoutBody/>
+        </sec:ifNotLoggedIn>
+        <sec:ifLoggedIn>
+    		<g:layoutBody/>
+        </sec:ifLoggedIn>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<r:layoutResources />

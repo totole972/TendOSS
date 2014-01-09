@@ -134,3 +134,4 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 grails.plugins.twitterbootstrap.fixtaglib = true
 grails.plugins.twitterbootstrap.defaultBundle = 'bundle_bootstrap'
 
+grails.views.gsp.encoding="UTF-8"

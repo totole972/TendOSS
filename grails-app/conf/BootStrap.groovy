@@ -1,6 +1,9 @@
+import tendoss.Level
 import tendoss.Role
+import tendoss.Techno
 import tendoss.User
 import tendoss.UserRole
+import tendoss.UserTechno
 
 class BootStrap {
 
@@ -42,6 +45,23 @@ class BootStrap {
         if(adminAuth.size() == 0){
             new UserRole(user: adminUser, role: adminRole).save()
         }
+
+        //techno
+        def technoCPP = new Techno(libelle: 'c++ ',description: 'c++')
+        def technoJava = new Techno(libelle: 'java',description: 'java')
+        technoCPP.save()
+        technoJava.save()
+
+        //niveau
+        def deb = new Level(name: 'debutant',description: 'je debute')
+        def intermedaire = new Level(name: 'intermediare',description: 'inter')
+        deb.save()
+        intermedaire.save()
+
+        //user techno
+        def julTechno  = new UserTechno(level: intermedaire,techno: technoCPP, user: julienUser)
+        julTechno.save()
+
     }
     def destroy = {
     }
