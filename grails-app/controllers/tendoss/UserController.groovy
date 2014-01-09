@@ -10,6 +10,11 @@ class UserController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    /**
+     * show Created Users
+     * @param max
+     * @return
+     */
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond User.list(params), model:[userInstanceCount: User.count()]
@@ -19,6 +24,10 @@ class UserController {
         respond userInstance
     }
 
+    /**
+     * to create a new user
+     * @return
+     */
     def create() {
         respond new User(params)
     }

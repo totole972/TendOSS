@@ -8,6 +8,7 @@ class BootStrap {
         def roles = Role.list()
         def userRole
         def adminRole
+        def julienUser
         if(roles.size() == 0){
             userRole = new Role(authority: 'ROLE_USER').save()
             adminRole = new Role(authority: 'ROLE_ADMIN').save()
@@ -25,6 +26,10 @@ class BootStrap {
             adminUser = new User(username: 'admin', password: "adminPassword")
             adminUser.emailAddress = "kevinanatole@yahoo.fr"
             adminUser.save(failOnError: true)
+
+            julienUser = new User(username: 'julien', password: "julien")
+            julienUser.emailAddress = "julien@yahoo.fr"
+            julienUser.save(failOnError: true)
         }else{
             adminUser = User.findByUsername("admin")
             stdUser = User.findByUsername("stdUser")

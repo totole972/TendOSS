@@ -18,7 +18,20 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
+		<div id="grailsLogo">
+            <a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a>
+
+            <span id="logger">
+                <sec:ifLoggedIn>
+                    Welcome <sec:username/>
+                    <a href="${createLink(controller:"logout")}">Logout</a>
+                </sec:ifLoggedIn>
+                <sec:ifNotLoggedIn>
+                    <a href="${createLink(controller:"login" ,action: 'auth')}">Login</a>
+                </sec:ifNotLoggedIn>
+            </span>
+        </div>
+
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
