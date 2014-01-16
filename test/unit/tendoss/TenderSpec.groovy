@@ -2,6 +2,7 @@ package tendoss
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification
+import spock.lang.Unroll
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
@@ -9,43 +10,47 @@ import spock.lang.Specification
 @TestFor(Tender)
 class TenderSpec extends Specification {
 
-    def setup() {
-    }
-
-    def cleanup() {
-    }
-
-    void "test something"() {
-    }
-	
-	def "Test constraints"() {
-		setup:
-		mockForConstraintsTests(Tender)
-
+	@Unroll
+	def "test tender name"() {
 		when:
-		def tender = new Tender(name: name, submissionDate: submissionDate, closed: closed)
-		tender.validate()
-
+			Tender tender = new Tender(name: name, description: "A description", answerDeadline: new Date() + 7)
 		then:
-		tender.hasErrors() == !valid
-
+			tender.validate() == nameIsOK
 		where:
-		name 		| 	submissionDate	|	closed	|	valid
-		null		|	null			|	null	|	false
-		"A name" 	| 	null			|	null	|	false
-		null		| 	new Date()		|	null	|	false
-		null		| 	null			|	false	|	false
-		"A name"	| 	new Date()		|	null	|	false
-		"A name"	| 	null			|	false	|	false
-		null		| 	new Date()		|	false	|	false
-		""			|	""				|	""		|	false
-		"A name" 	| 	""				|	""		|	false
-		""			| 	new Date()		|	""		|	false
-		""			| 	""				|	false	|	false
-		"A name"	| 	new Date()		|	""		|	false
-		"A name"	| 	""				|	false	|	false
-		""			| 	new Date()		|	false	|	false
+			name            | nameIsOK
+			null			| false
+			""				| false
+			"A name"		| true
 	}
+	
+	@Unroll
+	def "test tender description"() {
+		when:
+			Tender tender = new Tender(name: "A name", description: description, answerDeadline: new Date() + 7)
+		then:
+			tender.validate() == descriptionIsOK
+		where:
+			description     | descriptionIsOK
+			null			| false
+			""				| false
+			"A description" | true
+	}
+	
+	@Unroll
+	def "test tender deadline"() {
+		when:
+			Tender tender = new Tender(name: "A name", description: "A description", answerDeadline: deadline)
+		then:
+			tender.validate() == deadlineIsOK
+		where:
+			deadline         | deadlineIsOK
+			null			 | false
+			new Date() - 365 | false
+			new Date() + 6   | false
+			new Date() + 7   | true
+			new Date() + 365 | true
+	}	
+	
 }
 
 
