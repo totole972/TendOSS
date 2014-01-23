@@ -2,11 +2,9 @@ package tendoss
 
 class Answer {
 
-    Date answerDate
-    String content
-
-
-
+	String content
+	
+    Date answerDate = new Date()
 
     static belongsTo = [author: User]
     static hasMany = [attachements: File, answers: Answer, votes: Vote]
@@ -16,7 +14,6 @@ class Answer {
     }
 
     static constraints = {
-        answerDate nullable: false, blank: false
-        content nullable: false, blank: false
+		content blank: false
     }
 }
