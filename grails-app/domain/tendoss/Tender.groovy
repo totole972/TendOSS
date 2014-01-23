@@ -22,4 +22,8 @@ class Tender {
     static mapping = {
         version(false)
     }
+
+    String getLightDescription(){
+        return description.substring(0,255) + "..."
+    }
 }
