@@ -49,6 +49,17 @@ class TenderSpec extends Specification {
 			new Date() + 6   | false
 			new Date() + 7   | true
 			new Date() + 365 | true
+	}
+	
+	@Unroll
+	def "test tender light description"() {
+		when:
+			Tender tender = new Tender(name: "A name", description: description, answerDeadline: new Date() + 7)
+		then:
+			tender.getLightDescription() == lightDescription
+		where:
+			description = "Je suis une très très très très longue description. J’aimerais que la petite description soit beaucoup plus légère. Ce String servira pour le test unitaire de la fonction getLightDescription() !"
+			lightDescription = "Je suis une très très très très longue description. J’aimerais que la petite description soit beaucoup plus légère. Ce String s..."
 	}	
 	
 }
