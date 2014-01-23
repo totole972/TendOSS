@@ -1,7 +1,7 @@
 <%@ page import="tendoss.UserTechno; tendoss.Techno; tendoss.User" %>
 
 <!-- personnal informaton-->
-<fieldset class="personnal_informaton" legend="personnal informatons" style="border: 1px, #000000, solid">
+<fieldset class="personnal_informaton" style="border: 1px, #000000, solid">
     <legend>personnal informations</legend>
     <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'username', 'error')} required">
         <label for="username">
@@ -33,22 +33,36 @@
 
         </label>
         <ul class="one-to-many" id="usr_techno_list">
-            d   ${userInstance}d
             <g:each in="${userInstance?.skills?}" var="s">
                 <li>
-                    ${s.techno.libelle}&nbsp;${s.level.name}
+                    ${s.techno.libelle}&nbsp;${s.level.name} &nbsp;&nbsp;&nbsp;
+                    <g:remoteLink controller="userTechno" action="remove" id="${s?.id}" update="user_personnal_information">remove</g:remoteLink>
+
                 </li>
             </g:each>
         </ul>
         <!-- associate techno and level(for current user)-->
         <g:form >
             <g:select optionValue="libelle" optionKey="id" name="skills" from="${Techno.list()}" ></g:select>
-            <g:select optionValue="name" optionKey="id" name="level" from="${tendoss.Level.list()}" ></g:select>
+            <g:select optionValue="name" optionKey="id" name="level" from="${Level.list()}" ></g:select>
             <g:submitToRemote  update="user_personnal_information" url="[controller: 'UserTechno', action: 'create']" method="POST" value="Add to skills"></g:submitToRemote>
         </g:form>
         <!-- creating techno-->
         <br>
-        <g:link controller="userTechno" action="create" params="['user.id': userInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'userTechno.label', default: 'UserTechno')])}</g:link>
+        <fiedset legend="Add Techno" class="add_techno" style="border: 1px #000000 solid; text-align: center;"><!--TODO this border doesn't work-->
+            <legend>Add Techno</legend>
+            <g:form >
+                <p>
+                    <label for="tec_libelle">libelle</label>
+                    <g:textField name="libelle" id="tec_libelle"></g:textField>
+                </p>
+                <p>
+                    <label for="tec_description">description</label>
+                    <g:textField name="description" id="tec_description"></g:textField>
+                </p>
+                <g:submitToRemote  update="user_personnal_information" url="[controller: 'Techno', action: 'create']" method="POST" value="create techno"></g:submitToRemote>
+            </g:form>
+        </fiedset>
     </div>
 </fieldset>
 <!-- end of personnal informaton-->

@@ -1,9 +1,4 @@
-import tendoss.Level
-import tendoss.Role
-import tendoss.Techno
-import tendoss.User
-import tendoss.UserRole
-import tendoss.UserTechno
+import tendoss.*
 
 class BootStrap {
 
@@ -36,6 +31,7 @@ class BootStrap {
         }else{
             adminUser = User.findByUsername("admin")
             stdUser = User.findByUsername("stdUser")
+            julienUser = User.findByUsername("julien")
         }
         def stdAuth = stdUser.getAuthorities()
         if(stdAuth.size() == 0){
@@ -55,8 +51,10 @@ class BootStrap {
         //niveau
         def deb = new Level(name: 'debutant',description: 'je debute')
         def intermedaire = new Level(name: 'intermediare',description: 'inter')
+        def avance = new Level(name: 'avance',description: 'avance')
         deb.save()
         intermedaire.save()
+        avance.save()
 
         //user techno
         def julTechno  = new UserTechno(level: intermedaire,techno: technoCPP, user: julienUser)
