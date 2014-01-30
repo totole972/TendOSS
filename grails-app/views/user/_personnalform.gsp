@@ -1,4 +1,4 @@
-<%@ page import="tendoss.UserTechno; tendoss.Techno; tendoss.User" %>
+<%@ page import="tendoss.UserTechno; tendoss.Techno; tendoss.User; tendoss.Level" %>
 
 <!-- personnal informaton-->
 <fieldset class="personnal_informaton" style="border: 1px, #000000, solid">
@@ -63,7 +63,7 @@
                 <g:submitToRemote  update="user_personnal_information" url="[controller: 'Techno', action: 'create']" method="POST" value="create techno"></g:submitToRemote>
             </g:form>
         </fiedset>
-    </div>
+    </div>w
 </fieldset>
 <!-- end of personnal informaton-->
 

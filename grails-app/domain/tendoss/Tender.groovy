@@ -21,13 +21,11 @@ class Tender {
 
     static mapping = {
         version(false)
-		description type: "text"
     }
-
 	
 	static transients = ['lightDescription']
 
     String getLightDescription() {
-		description.take(127) + "..."
+		description.substring(0, 127) + "..."
     }
 }
