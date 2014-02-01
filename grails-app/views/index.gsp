@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
-		<style type="text/css" media="screen">
+<head>
+    <meta name="layout" content="main"/>
+    <title>TendOSS Application</title>
+    <!--<style type="text/css" media="screen">
 			#status {
 				background-color: #eee;
 				border: .2em solid #fff;
@@ -158,70 +158,107 @@
         #login .inner .chk {
             height: 12px;
         }
-        </style>
-	</head>
-	<body>
-		<div id="status" role="complementary" >
-			<h1>Application Status</h1>
-			<ul>
-				<li>App version: <g:meta name="app.version"/></li>
-				<li>Grails version: <g:meta name="app.grails.version"/></li>
-				<li>Groovy version: ${GroovySystem.getVersion()}</li>
-				<li>JVM version: ${System.getProperty('java.version')}</li>
-				<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-				<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-				<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-			</ul>
-			<h1>Installed Plugins</h1>
-			<ul>
-				<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-					<li>${plugin.name} - ${plugin.version}</li>
-				</g:each>
-			</ul>
-		</div>
-		<div id="page-body" role="main">
-			<h1>TendOSS App Home page</h1>
-            <sec:ifNotLoggedIn>
-                <div id='login'>
-                    <div class='inner'>
-                        <div class='fheader'><g:message code="springSecurity.login.header"/></div>
+        </style>-->
+</head>
+<body>
+    <div class="jumbotron">
+        <h2></h><div class='fheader'><g:message code="springSecurity.login.header"/></div></h2>
 
-                        <g:if test='${flash.message}'>
-                            <div class='login_message'>${flash.message}</div>
-                        </g:if>
-                        <!--postUrl-->
-                        <form action='${createLink(controller:"j_spring_security_check")}' method='POST' id='loginForm' class='cssform' autocomplete='on' style="height:150px; ">
-                            <p>
-                                <label for='username'><g:message code="springSecurity.login.username.label"/>:</label>
-                                <input type='text' class='text_' name='j_username' id='username'/>
-                            </p>
+        <g:if test='${flash.message}'>
+            <div class='login_message'>${flash.message}</div>
+        </g:if>
 
-                            <p>
-                                <label for='password'><g:message code="springSecurity.login.password.label"/>:</label>
-                                <input type='password' class='text_' name='j_password' id='password'/>
-                            </p>
+        <g:form controller="j_spring_security_check" method="POST">
+            <div class="input-group">
+                <span class="input-group-addon"><g:message code="springSecurity.login.username.label"/></span>
+                <input type="text" class="form-control" placeholder="Username" name='j_username' id='username'>
+            </div>
 
-                            <p id="remember_me_holder">
-                                <input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me' <g:if test='${hasCookie}'>checked='checked'</g:if>/>
-                                <label for='remember_me'><g:message code="springSecurity.login.remember.me.label"/></label>
-                            </p>
+            <div class="input-group">
+                <input type="password" class="form-control" placeholder="Password" name='j_password' id='password'>
+                <span class="input-group-addon"><g:message code="springSecurity.login.password.label"/></span>
+            </div>
 
-                            <p>
-                                <input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}'/>
-                            </p>
-                        </form>
+            <p id="remember_me_holder">
+                <input type='checkbox' class='form-control' name='${rememberMeParameter}' id='remember_me' <g:if test='${hasCookie}'>checked='checked'</g:if>/>
+                <label for='remember_me'><g:message code="springSecurity.login.remember.me.label"/></label>
+            </p>
+
+            <button type="submit" class="btn btn-success " id="submit">
+                <g:message code="springSecurity.login.button"/>
+            </button>
+        </g:form>
+    </div>
+    <script type='text/javascript'>
+        <!--
+        (function() {
+            document.forms['loginForm'].elements['j_username'].focus();
+        })();
+        // -->
+    </script>
+%{--<div class="jumbotron">
+    <h1>TendOSS</h1>
+    <sec:ifNotLoggedIn>
+    %{--<div id='login'>
+        <div class='inner'>
+            <div class='fheader'><g:message code="springSecurity.login.header"/></div>
+
+            <g:if test='${flash.message}'>
+                <div class='login_message'>${flash.message}</div>
+            </g:if>
+            <!--postUrl-->
+
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><g:message code="springSecurity.login.username.label"/>:</span>
+                        <input type="text" class="form-control" name='j_username' id='username' placeholder="Username">
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><g:message code="springSecurity.login.password.label"/>:</span>
+                        <input type="text" class="form-control" name='j_password' id='password'>
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><g:message code="springSecurity.login.remember.me.label"/></span>
+                        <input type='checkbox' class='form-control' name='${rememberMeParameter}' id='remember_me' <g:if test='${hasCookie}'>checked='checked'</g:if>/>
                     </div>
                 </div>
-                <script type='text/javascript'>
-                    <!--
-                    (function() {
-                        document.forms['loginForm'].elements['j_username'].focus();
-                    })();
-                    // -->
-                </script>
-             </sec:ifNotLoggedIn>
+                <input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}'/>
+            </form>
+%{--
+            <form action='${createLink(controller:"j_spring_security_check")}' method='POST' id='loginForm' class='cssform' autocomplete='on' style="height:150px; ">
+                <p>
+                    <label for='username'><g:message code="springSecurity.login.username.label"/>:</label>
+                    <input type='text' class='text_' name='j_username' id='username'/>
+                </p>
+
+                <p>
+                    <label for='password'><g:message code="springSecurity.login.password.label"/>:</label>
+                    <input type='password' class='text_' name='j_password' id='password'/>
+                </p>
+
+                <p id="remember_me_holder">
+                    <input type='checkbox' class='form-control' name='${rememberMeParameter}' id='remember_me' <g:if test='${hasCookie}'>checked='checked'</g:if>/>
+                    <label for='remember_me'><g:message code="springSecurity.login.remember.me.label"/></label>
+                </p>
+
+                <p>
+                    <input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}'/>
+                </p>
+            </form>
+
         </div>
-	</body>
+    </div>
+        <script type='text/javascript'>
+            <!--
+            (function() {
+                document.forms['loginForm'].elements['j_username'].focus();
+            })();
+            // -->
+        </script>
+    </sec:ifNotLoggedIn>
+</div>--}%
+</body>
 </html>
