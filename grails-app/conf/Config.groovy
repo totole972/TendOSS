@@ -142,8 +142,4 @@ grails.plugin.springsecurity.adh.errorPage = "/index"
 grails.plugin.springsecurity.auth.loginFormUrl = "/"
 
 
-
-grails.plugins.twitterbootstrap.fixtaglib = true
-grails.plugins.twitterbootstrap.defaultBundle = 'bundle_bootstrap'
-
 grails.views.gsp.encoding="UTF-8"
