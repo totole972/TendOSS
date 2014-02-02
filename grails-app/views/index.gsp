@@ -1,3 +1,4 @@
+<%@ page import="tendoss.User; grails.plugin.springsecurity.SpringSecurityService" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -37,7 +38,12 @@
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="active"><a href="#">HOME</a></li>
-						<li><a data-toggle="modal" data-target="#myModal" href="#myModal">LOGIN</a></li>
+						<sec:ifLoggedIn>
+							<li><a href="#">LOGGED IN</a></li>
+						</sec:ifLoggedIn>
+						<sec:ifNotLoggedIn>
+							<li><a data-toggle="modal" data-target="#myModal" href="#myModal">LOGIN</a></li>
+						</sec:ifNotLoggedIn>
 					</ul>
 				</div>
 			</div>
