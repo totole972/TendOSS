@@ -1,14 +1,14 @@
 package tendoss
 
-import grails.plugin.springsecurity.userdetails.GrailsUser
-
 class UserTechnoController {
 
     def springSecurityService
     def index() {}
 
-    def create(){
-        def user = User.get((long)((GrailsUser)springSecurityService.authentication.getPrincipal()).getId())
+    def create(UserTechno userTechnoInstance){
+        //def user = User.get((long)((GrailsUser)springSecurityService.authentication.getPrincipal()).getId())
+        //def user = User.get((long)(springSecurityService.authentication.getPrincipal()).getId())
+        def user = springSecurityService.currentUser
         def techno = params.skills
         def level = params.level
 
@@ -19,8 +19,7 @@ class UserTechnoController {
     }
 
     def remove(UserTechno userTechnoInstance){
-        def user = User.get((long)((GrailsUser)springSecurityService.authentication.getPrincipal()).getId())
-        print userTechnoInstance
+        def user = springSecurityService.currentUser
         if (userTechnoInstance != null)
             userTechnoInstance.delete()
 
