@@ -119,14 +119,19 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						<h4 class="modal-title" id="myModalLabel">Sign in</h4>
 					</div>
-					<div class="modal-body">
-						<div class="row centered">
-							<p>TO DO</p>
+					<g:form controller="j_spring_security_check" method="POST">
+						<div class="modal-body">
+							<div class="form-group">
+								<input type="text" class="form-control" name="j_username" id="j_username" placeholder="Enter your username">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" name="j_password" id="j_password" placeholder="Enter your password">
+							</div>
 						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Connexion</button>
-					</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-danger" data-dismiss="modal">Connexion</button>
+						</div>
+					</g:form>
 				</div>
 			</div>
 		</div>
