@@ -5,92 +5,140 @@
 <!--[if IE 8 ]>    <html lang="fr" class="no-js ie8"> <![endif]-->
 <!--[if IE 9 ]>    <html lang="fr" class="no-js ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title><g:layoutTitle default="TendOss"/></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
-    <link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
-    <script src="http//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <g:layoutHead/>
-    <g:javascript library="application"/>
-    <r:layoutResources />
-</head>
-<body>
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="${createLink(uri: '/')}">TendOSS</a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <sec:ifLoggedIn>
-                    <li><a href="#">Welcome <sec:username/></a></li>
-                    <li><a href="${createLink(controller:"logout")}">Logout</a></li>
-                    <li><a href="${createLink(controller:"user", action: 'edit', id: sec.loggedInUserInfo(field: 'id'))}">Edit profile</a></li>
-                </sec:ifLoggedIn>
-                <sec:ifNotLoggedIn>
-                    <li><a href="${createLink(controller:"index")}">Login</a></li>
-                    <li><a href="${createLink(controller:"User" ,action: 'create')}">Sign up</a></li>
-                </sec:ifNotLoggedIn>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</div>
-
-<div class="container">
-    <div class="starter-template">
-        <g:layoutBody/>
-    </div>
-</div>
-
-%{--<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <a class="navbar-brand" href="${createLink(uri: '/')}"><img src="${resource(dir: 'images', file: 'TendOSS_logo.png')}" alt="TendOSS"/></a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <sec:ifLoggedIn>
-                    Welcome <sec:username/>
-                    <a href="${createLink(controller:"logout")}">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="${createLink(controller:"user", action: 'edit', id: sec.loggedInUserInfo(field: 'id'))}">Edit profile</a>
-                </sec:ifLoggedIn>
-                <sec:ifNotLoggedIn>
-                    <a href="${createLink(controller:"login" ,action: 'auth')}">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="${createLink(controller:"User" ,action: 'create')}">Sign up</a>
-                </sec:ifNotLoggedIn>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
-%{--
-<sec:ifNotLoggedIn>
-    <!--TODO :  render login-->
-    <g:layoutBody/>
-</sec:ifNotLoggedIn>
-<sec:ifLoggedIn>
-    <g:layoutBody/>
-</sec:ifLoggedIn>
--->--}%
-<div class="footer" role="contentinfo"></div>
-<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-<r:layoutResources />
-</body>
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    
+	    <title>TENDOSS - Tender Open Source Software</title>
+	    
+	    <link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
+	    <link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
+	    <link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
+	    
+	    <!-- Bootstrap core CSS -->
+	   	<link href="${resource(dir: 'css', file: 'bootstrap.css')}" rel="stylesheet">
+	   	<link href="${resource(dir: 'css', file: 'font-awesome.min.css')}" rel="stylesheet">
+	
+		<!-- Custom styles for this template -->
+	   	<link href="${resource(dir: 'css', file: 'mainstyle.css')}" rel="stylesheet">
+	   	
+	   	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	    <!--[if lt IE 9]>
+	      	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	      	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	    <![endif]-->
+	    
+	    <g:layoutHead/>
+		<r:layoutResources/>
+	</head>
+	<body>
+		<!-- NAVIGATION SECTION -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+		    <div class="container">
+		        <div class="navbar-header">
+		            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		            </button>
+		            <a class="navbar-brand" href="${createLink(uri: '/')}">TEND<i class="fa fa-circle"></i>SS</a>
+		        </div>
+		        <div class="navbar-collapse collapse">
+		            <ul class="nav navbar-nav navbar-right">
+		                <sec:ifLoggedIn>
+		                    <li class="active"><a href="#">WELCOME <font style="text-transform: uppercase;"><sec:username/></font></a></li>
+		                    <li><a href="${createLink(controller: 'logout')}">LOGOUT</a></li>
+		                    <li><a href="${createLink(controller: 'user', action: 'edit', id: sec.loggedInUserInfo(field: 'id'))}">EDIT PROFILE</a></li>
+		                </sec:ifLoggedIn>
+		                <sec:ifNotLoggedIn>
+		                    <li class="active"><a href="${createLink(controller: 'index')}">LOGIN</a></li>
+		                    <li><a data-toggle="modal" data-target="#myModal" href="#myModal">MODAL LOGIN</a></li>
+		                    <li><a href="${createLink(controller: 'user',action: 'create')}">SIGN UP</a></li>
+		                </sec:ifNotLoggedIn>
+		            </ul>
+		        </div>
+		    </div>
+		</div>
+		
+		<g:layoutBody/>
+		
+		%{--<nav class="navbar navbar-default" role="navigation">
+		    <div class="container-fluid">
+		        <!-- Brand and toggle get grouped for better mobile display -->
+		        <div class="navbar-header">
+		            <a class="navbar-brand" href="${createLink(uri: '/')}"><img src="${resource(dir: 'images', file: 'TendOSS_logo.png')}" alt="TendOSS"/></a>
+		        </div>
+		
+		        <!-- Collect the nav links, forms, and other content for toggling -->
+		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		            <ul class="nav navbar-nav navbar-right">
+		                <sec:ifLoggedIn>
+		                    Welcome <sec:username/>
+		                    <a href="${createLink(controller:"logout")}">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		                    <a href="${createLink(controller:"user", action: 'edit', id: sec.loggedInUserInfo(field: 'id'))}">Edit profile</a>
+		                </sec:ifLoggedIn>
+		                <sec:ifNotLoggedIn>
+		                    <a href="${createLink(controller:"login" ,action: 'auth')}">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		                    <a href="${createLink(controller:"User" ,action: 'create')}">Sign up</a>
+		                </sec:ifNotLoggedIn>
+		            </ul>
+		        </div><!-- /.navbar-collapse -->
+		    </div><!-- /.container-fluid -->
+		</nav>
+		%{--
+		<sec:ifNotLoggedIn>
+		    <!--TODO :  render login-->
+		    <g:layoutBody/>
+		</sec:ifNotLoggedIn>
+		<sec:ifLoggedIn>
+		    <g:layoutBody/>
+		</sec:ifLoggedIn>
+		-->--}%
+		
+		<!-- COPYRIGHT SECTION -->
+		<div id="r">
+			<div class="container">
+				<div class="row centered">
+					<div class="col-lg-8 col-lg-offset-2">
+						<h4>© 2014 TendOSS</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- MODAL FOR LOGIN -->
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Sign in</h4>
+					</div>
+					<g:form controller="j_spring_security_check" method="POST">
+						<div class="modal-body">
+							<div class="form-group">
+								<input type="text" class="form-control" name="j_username" id="j_username" placeholder="Enter your username">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" name="j_password" id="j_password" placeholder="Enter your password">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-danger" data-dismiss="modal">Connexion</button>
+						</div>
+					</g:form>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+	    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
+		
+		<r:layoutResources />
+	</body>
 </html>

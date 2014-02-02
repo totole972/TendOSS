@@ -1,54 +1,9 @@
-<%@ page import="tendoss.User; grails.plugin.springsecurity.SpringSecurityService" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
-		<meta charset="utf-8">
-    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>TENDOSS - Tender Open Source Software</title>
-		
-		<!-- Bootstrap core CSS -->
-    	<link href="${resource(dir: 'css', file: 'bootstrap.css')}" rel="stylesheet">
-    	<link href="${resource(dir: 'css', file: 'font-awesome.min.css')}" rel="stylesheet">
-
-		<!-- Custom styles for this template -->
-    	<link href="${resource(dir: 'css', file: 'mainstyle.css')}" rel="stylesheet">
-    	
-    	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	    <!--[if lt IE 9]>
-	      	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	      	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-	    <![endif]-->
-	    
-		<r:layoutResources/>
+		<meta name="layout" content="main">
 	</head>
 	<body>
-		<!-- NAVIGATION SECTION -->
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            			<span class="icon-bar"></span>
-           				<span class="icon-bar"></span>
-            			<span class="icon-bar"></span>
-          			</button>
-          			<a class="navbar-brand" href="#">TEND<i class="fa fa-circle"></i>SS</a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="#">HOME</a></li>
-						<sec:ifLoggedIn>
-							<li><a href="#">LOGGED IN</a></li>
-						</sec:ifLoggedIn>
-						<sec:ifNotLoggedIn>
-							<li><a data-toggle="modal" data-target="#myModal" href="#myModal">LOGIN</a></li>
-						</sec:ifNotLoggedIn>
-					</ul>
-				</div>
-			</div>
-		</div>
-		
 		<!-- HEADER SECTION -->
 		<div id="headerwrap">
 			<div class="container">
@@ -104,50 +59,5 @@
 				</div>
 			</div>
 		</div>
-		
-		<!-- COPYRIGHT SECTION -->
-		<div id="r">
-			<div class="container">
-				<div class="row centered">
-					<div class="col-lg-8 col-lg-offset-2">
-						<h4>© 2014 TendOSS</h4>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<!-- MODAL FOR LOGIN -->
-		<!-- Modal -->
-		<div class="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">Sign in</h4>
-					</div>
-					<g:form controller="j_spring_security_check" method="POST">
-						<div class="modal-body">
-							<div class="form-group">
-								<input type="text" class="form-control" name="j_username" id="j_username" placeholder="Enter your username">
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" name="j_password" id="j_password" placeholder="Enter your password">
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-danger" data-dismiss="modal">Connexion</button>
-						</div>
-					</g:form>
-				</div>
-			</div>
-		</div>
-		
-		<!-- Bootstrap core JavaScript
-	    ================================================== -->
-	    <!-- Placed at the end of the document so the pages load faster -->
-	    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-	    <script src="js/bootstrap.min.js"></script>
-
-		<r:layoutResources/>
 	</body>
 </html>
