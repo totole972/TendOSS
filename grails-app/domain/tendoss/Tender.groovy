@@ -10,8 +10,8 @@ class Tender {
 	
     Boolean closed = false
 
-    static belongsTo = [User]
-    static hasMany = [answers: Answer, attachements: File, requirements: TenderTechno, participants: User]
+    static belongsTo = [postOwner: User]
+    static hasMany = [answers: Answer, attachements: File, requirements: TenderTechno]
 
     static constraints = {
         name blank: false, unique: true, maxSize: 256
@@ -21,11 +21,13 @@ class Tender {
 
     static mapping = {
         version(false)
+		description type: "text"
     }
+
 	
 	static transients = ['lightDescription']
 
     String getLightDescription() {
-		description.substring(0, 127) + "..."
+		description.take(127) + "..."
     }
 }

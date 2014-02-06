@@ -10,9 +10,14 @@ class TenderController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
-        // params.max = Math.min(max ?: 10, 100)
-		params.max = 10
-        respond Tender.list(params), model:[tenderInstanceCount: Tender.count()]
+       params.sort = "submissionDate"
+	   params.order = "desc"
+ 		
+ 		def query = Tender.where {
+ 			closed == false
+ 		}
+ 		
+        respond query.list(params), model:[tenderInstanceCount: Tender.count()]
     }
 
     def show(Tender tenderInstance) {

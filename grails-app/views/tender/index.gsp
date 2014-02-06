@@ -20,44 +20,20 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
-			<thead>
-					<tr>
+			
+			<g:each in="${tenderInstanceList}" status="i" var="tenderInstance">
+				<div class="${(i % 2) == 0 ? 'even' : 'odd'}" style="margin:30px">
 					
-						<g:sortableColumn property="name" title="${message(code: 'tender.name.label', default: 'Name')}" />
+					<h2><g:link action="show" id="${tenderInstance.id}">${fieldValue(bean: tenderInstance, field: "name")}</g:link></h2>
+				
+					<b>Submitted :</b> <g:formatDate date="${tenderInstance.submissionDate}" format="dd/MM/yyyy"/><br />
+					<b>Answer deadline :</b> <g:formatDate date="${tenderInstance.answerDeadline}" format="dd/MM/yyyy" /><br />
 					
-						<g:sortableColumn property="submissionDate" title="${message(code: 'tender.submissionDate.label', default: 'Submission Date')}" />
-					
-						<g:sortableColumn property="closed" title="${message(code: 'tender.closed.label', default: 'Closed')}" />
-					
-						<g:sortableColumn property="answerDeadline" title="${message(code: 'tender.answerDeadline.label', default: 'Answer Deadline')}" />
-					
-						<g:sortableColumn property="delivaryDeadline" title="${message(code: 'tender.delivaryDeadline.label', default: 'Delivary Deadline')}" />
-					
-						<g:sortableColumn property="detailedDescription" title="${message(code: 'tender.detailedDescription.label', default: 'Detailed Description')}" />
-					
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${tenderInstanceList}" status="i" var="tenderInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${tenderInstance.id}">${fieldValue(bean: tenderInstance, field: "name")}</g:link></td>
-					
-						<td><g:formatDate date="${tenderInstance.submissionDate}" /></td>
-					
-						<td><g:formatBoolean boolean="${tenderInstance.closed}" /></td>
-					
-						<td><g:formatDate date="${tenderInstance.answerDeadline}" /></td>
-					
-						<td><g:formatDate date="${tenderInstance.delivaryDeadline}" /></td>
-					
-						<td>${fieldValue(bean: tenderInstance, field: "detailedDescription")}</td>
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
+					<p><i>${fieldValue(bean: tenderInstance, field: "lightDescription")}</i></p>
+					<hr />
+				</div>
+			</g:each>
+			
 			<div class="pagination">
 				<g:paginate total="${tenderInstanceCount ?: 0}" />
 			</div>
