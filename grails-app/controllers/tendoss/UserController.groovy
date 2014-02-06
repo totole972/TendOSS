@@ -1,15 +1,19 @@
 package tendoss
 
-
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class UserController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    /**
+     * show list of Created Users
+     * @param max
+     * @return
+     */
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond User.list(params), model:[userInstanceCount: User.count()]
@@ -19,6 +23,10 @@ class UserController {
         respond userInstance
     }
 
+    /**
+     * to create a new user
+     * @return
+     */
     def create() {
         respond new User(params)
     }
@@ -100,5 +108,9 @@ class UserController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+
+    def _personnalform(User userInstance){
+        respond User.get(params.userInstance)
     }
 }

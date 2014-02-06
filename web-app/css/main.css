@@ -594,3 +594,13 @@ a.skip {
 	position: absolute;
 	left: -9999px;
 }
+
+
+
+/*
+julien's adding
+*/
+span#logger{
+    float: right;
+    margin-right: 10%;
+}

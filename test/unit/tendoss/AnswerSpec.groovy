@@ -9,12 +9,44 @@ import spock.lang.Specification
 @TestFor(Answer)
 class AnswerSpec extends Specification {
 
-    def setup() {
-    }
+	def setup() {
+	}
 
-    def cleanup() {
-    }
+	def cleanup() {
+	}
 
-    void "test something"() {
-    }
+	def "Test answerDate constraints"() {
+		setup:
+		mockForConstraintsTests(Answer)
+
+		when:
+		def answer = new Answer(answerDate: answerDate, content: "Answer text")
+		answer.validate()
+
+		then:
+		answer.hasErrors() == !valid
+
+		where:
+		answerDate 	| valid
+		null 		| false
+		"" 			| false
+	}
+
+	def "Test content constraints"() {
+		setup:
+		mockForConstraintsTests(Answer)
+
+		when:
+		def calendar = new GregorianCalendar(2011, 1, 7)
+		def answer = new Answer(answerDate: calendar.getTime(), content: content)
+		answer.validate()
+
+		then:
+		answer.hasErrors() == !valid
+
+		where:
+		content | valid
+		null 	| false
+		"" 		| false
+	}
 }

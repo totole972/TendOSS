@@ -15,6 +15,17 @@ class LevelSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "test constraint name"() {
+        when:"adding Level"
+        def lev = new Level(name:name, description:descr)
+
+        then:
+        lev.validate() == result
+
+        where:
+        name        |descr      | result
+        "level"     |"bla"      | true
+        null        |"bla"      | false
+        ""          |"bla"      | false
     }
 }

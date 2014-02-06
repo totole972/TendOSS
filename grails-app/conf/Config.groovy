@@ -131,6 +131,15 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/favicon.ico':                ['permitAll']
 ]
 
-grails.plugins.twitterbootstrap.fixtaglib = true
-grails.plugins.twitterbootstrap.defaultBundle = 'bundle_bootstrap'
+grails.plugin.springsecurity.logout.postOnly = false
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/'
+grails.plugin.springsecurity.failureHandler.defaultFailureUrl = '/index'
+grails.plugin.springsecurity.failureHandler.ajaxAuthFailUrl = '/index'
 
+
+grails.plugin.springsecurity.adh.ajaxErrorPage = "/index"
+grails.plugin.springsecurity.adh.errorPage = "/index"
+grails.plugin.springsecurity.auth.loginFormUrl = "/"
+
+
+grails.views.gsp.encoding="UTF-8"

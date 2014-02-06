@@ -1,16 +1,19 @@
 package tendoss
 
-class UserTechno {
+class UserTechno implements Serializable{
 
     Level level
-
-    static belongsTo = [user: User, techno: Techno]
+    Techno techno
+    User user
+    //static belongsTo = [user: User]
 
     static mapping = {
         version(false)
+        id composite: ['user', 'techno']
     }
 
     static constraints = {
         level nullable: false, blank: false
     }
+
 }
