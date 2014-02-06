@@ -12,6 +12,11 @@ class TenderControllerSpec extends Specification {
         assert params != null
         // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
+		
+		params["name"] = "Tender name"
+		params["description"] = "Tender description description description description description description"
+		params["answerDeadline"] = new Date() + 31
+		params["postOwner"] = new User(username:'lol', password:'lol', emailAddress:'lol@lol.com')
     }
 
     void "Test the index action returns the correct model"() {

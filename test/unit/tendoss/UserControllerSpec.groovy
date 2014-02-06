@@ -2,17 +2,24 @@ package tendoss
 
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
+import grails.plugin.springsecurity.SpringSecurityService
 import spock.lang.Specification
 
 @TestFor(UserController)
-@Mock(User)
+@Mock([SpringSecurityService, User])
 class UserControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
         // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
+		
+		params["username"] = "Julien"
+		params["password"] = "julien"
+		params["emailAddress"] = "julien@yahoo.fr"
     }
+	
+	SpringSecurityService sprSecSrv = Mock(SpringSecurityService)
 
     void "Test the index action returns the correct model"() {
 
@@ -33,9 +40,10 @@ class UserControllerSpec extends Specification {
     }
 
     void "Test the save action correctly persists an instance"() {
-
+			
         when:"The save action is executed with an invalid instance"
             def user = new User()
+			user.springSecurityService = sprSecSrv
             user.validate()
             controller.save(user)
 
@@ -47,6 +55,7 @@ class UserControllerSpec extends Specification {
             response.reset()
             populateValidParams(params)
             user = new User(params)
+			user.springSecurityService = sprSecSrv
 
             controller.save(user)
 
@@ -66,6 +75,7 @@ class UserControllerSpec extends Specification {
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
             def user = new User(params)
+			user.springSecurityService = sprSecSrv
             controller.show(user)
 
         then:"A model is populated containing the domain instance"
@@ -82,6 +92,7 @@ class UserControllerSpec extends Specification {
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
             def user = new User(params)
+			user.springSecurityService = sprSecSrv
             controller.edit(user)
 
         then:"A model is populated containing the domain instance"
@@ -100,6 +111,7 @@ class UserControllerSpec extends Specification {
         when:"An invalid domain instance is passed to the update action"
             response.reset()
             def user = new User()
+			user.springSecurityService = sprSecSrv
             user.validate()
             controller.update(user)
 
@@ -110,7 +122,9 @@ class UserControllerSpec extends Specification {
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            user = new User(params).save(flush: true)
+            user = new User(params)
+			user.springSecurityService = sprSecSrv
+			user.save(flush: true)
             controller.update(user)
 
         then:"A redirect is issues to the show action"
@@ -129,7 +143,9 @@ class UserControllerSpec extends Specification {
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def user = new User(params).save(flush: true)
+            def user = new User(params)
+			user.springSecurityService = sprSecSrv
+			user.save(flush: true)
 
         then:"It exists"
             User.count() == 1
