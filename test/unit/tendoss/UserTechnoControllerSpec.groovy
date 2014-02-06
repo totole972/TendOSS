@@ -39,7 +39,7 @@ class UserTechnoControllerSpec extends Specification {
         controller.params.skills = skill.id
 
         sprSecSrv.currentUser >> user
-        controller.create(model.userTechnoInstance)
+        controller.create()
 
         then: "all must be good"
         response.redirectedUrl == '/user/_personnalform?userInstance='+user.id
@@ -54,7 +54,7 @@ class UserTechnoControllerSpec extends Specification {
         controller.params.skills = "ae"
 
         sprSecSrv.currentUser >> user
-        controller.create(model.userTechnoInstance)
+        controller.create()
 
         then: "redirect is same, no instance is created"
         response.redirectedUrl == '/user/_personnalform?userInstance='+user.id
@@ -67,7 +67,8 @@ class UserTechnoControllerSpec extends Specification {
         def userTechnoInstance = new UserTechno(user: user,level: level, techno: skill)
         userTechnoInstance.save()
         sprSecSrv.currentUser >> user
-        controller.remove(userTechnoInstance )
+        controller.params.technoId = skill.id
+        controller.remove( userTechnoInstance)
 
         then: "it is removed"
         response.redirectedUrl == '/user/_personnalform?userInstance='+user.id
