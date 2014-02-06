@@ -17,6 +17,7 @@ class Tender {
         name blank: false, unique: true, maxSize: 256
 		description blank: false
 		answerDeadline min: new Date() + 6
+        votes unique: true
     }
 
     static mapping = {
