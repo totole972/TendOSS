@@ -67,7 +67,7 @@
 			<div class="container">
 				<div class="row centered">
 					<div class="col-lg-8 col-lg-offset-2">
-						<h4>© 2014 TendOSS</h4>
+						<h4>Copyright © TendOSS, 2014</h4>
 					</div>
 				</div>
 			</div>
