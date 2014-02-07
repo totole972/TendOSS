@@ -53,7 +53,7 @@
 		                </sec:ifLoggedIn>
 		                <sec:ifNotLoggedIn>
 		                    <li class="active"><a data-toggle="modal" data-target="#myModal" href="#myModal">LOGIN</a></li>
-		                    <li><a href="${createLink(controller: 'user', action: 'create')}">SIGN UP</a></li>
+		                    <li><a href="#signUp">SIGN UP</a></li>
 		                </sec:ifNotLoggedIn>
 		            </ul>
 		        </div>

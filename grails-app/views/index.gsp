@@ -49,7 +49,7 @@
 		
 		<!-- SIGN UP SECTION -->
 		<div id="dg">
-			<div class="container wb">
+			<div id="signUp" class="container wb">
 				<div class="row centered">
 					<br><br>
 					<div class="col-lg-8 col-lg-offset-2">
