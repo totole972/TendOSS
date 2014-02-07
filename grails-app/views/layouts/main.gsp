@@ -126,7 +126,7 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button type="submit" class="btn btn-danger" data-dismiss="modal">Connexion</button>
+							<button type="submit" class="btn btn-danger">Connexion</button>
 						</div>
 					</g:form>
 				</div>
