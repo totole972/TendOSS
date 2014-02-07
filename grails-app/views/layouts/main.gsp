@@ -52,9 +52,8 @@
 		                    <li><a href="${createLink(controller: 'user', action: 'edit', id: sec.loggedInUserInfo(field: 'id'))}">EDIT PROFILE</a></li>
 		                </sec:ifLoggedIn>
 		                <sec:ifNotLoggedIn>
-		                    <li class="active"><a href="${createLink(controller: 'index')}">LOGIN</a></li>
-		                    <li><a data-toggle="modal" data-target="#myModal" href="#myModal">MODAL LOGIN</a></li>
-		                    <li><a href="${createLink(controller: 'user',action: 'create')}">SIGN UP</a></li>
+		                    <li class="active"><a data-toggle="modal" data-target="#myModal" href="#myModal">LOGIN</a></li>
+		                    <li><a href="${createLink(controller: 'user', action: 'create')}">SIGN UP</a></li>
 		                </sec:ifNotLoggedIn>
 		            </ul>
 		        </div>
