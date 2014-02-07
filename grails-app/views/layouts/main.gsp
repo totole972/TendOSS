@@ -62,39 +62,6 @@
 		
 		<g:layoutBody/>
 		
-		%{--<nav class="navbar navbar-default" role="navigation">
-		    <div class="container-fluid">
-		        <!-- Brand and toggle get grouped for better mobile display -->
-		        <div class="navbar-header">
-		            <a class="navbar-brand" href="${createLink(uri: '/')}"><img src="${resource(dir: 'images', file: 'TendOSS_logo.png')}" alt="TendOSS"/></a>
-		        </div>
-		
-		        <!-- Collect the nav links, forms, and other content for toggling -->
-		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		            <ul class="nav navbar-nav navbar-right">
-		                <sec:ifLoggedIn>
-		                    Welcome <sec:username/>
-		                    <a href="${createLink(controller:"logout")}">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;
-		                    <a href="${createLink(controller:"user", action: 'edit', id: sec.loggedInUserInfo(field: 'id'))}">Edit profile</a>
-		                </sec:ifLoggedIn>
-		                <sec:ifNotLoggedIn>
-		                    <a href="${createLink(controller:"login" ,action: 'auth')}">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
-		                    <a href="${createLink(controller:"User" ,action: 'create')}">Sign up</a>
-		                </sec:ifNotLoggedIn>
-		            </ul>
-		        </div><!-- /.navbar-collapse -->
-		    </div><!-- /.container-fluid -->
-		</nav>
-		%{--
-		<sec:ifNotLoggedIn>
-		    <!--TODO :  render login-->
-		    <g:layoutBody/>
-		</sec:ifNotLoggedIn>
-		<sec:ifLoggedIn>
-		    <g:layoutBody/>
-		</sec:ifLoggedIn>
-		-->--}%
-		
 		<!-- COPYRIGHT SECTION -->
 		<div id="r">
 			<div class="container">
