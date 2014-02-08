@@ -3,6 +3,7 @@ package tendoss
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import grails.plugin.springsecurity.SpringSecurityService
+import org.codehaus.groovy.grails.test.io.SystemOutAndErrSwapper
 import spock.lang.Specification
 
 @TestFor(UserController)
@@ -11,14 +12,14 @@ class UserControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
+        // Populate valid properties like...
         //params["name"] = 'someValidName'
-		
+
 		params["username"] = "Julien"
 		params["password"] = "julien"
 		params["emailAddress"] = "julien@yahoo.fr"
     }
-	
+
 	SpringSecurityService sprSecSrv = Mock(SpringSecurityService)
 
     void "Test the index action returns the correct model"() {
@@ -40,7 +41,7 @@ class UserControllerSpec extends Specification {
     }
 
     void "Test the save action correctly persists an instance"() {
-			
+
         when:"The save action is executed with an invalid instance"
             def user = new User()
 			user.springSecurityService = sprSecSrv
@@ -118,18 +119,21 @@ class UserControllerSpec extends Specification {
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
             model.userInstance == user
-
+    }
+    void "Test the update action performs an update on a valid domain instance splited"() {
         when:"A valid domain instance is passed to the update action"
-            response.reset()
-            populateValidParams(params)
-            user = new User(params)
-			user.springSecurityService = sprSecSrv
-			user.save(flush: true)
-            controller.update(user)
+        //response.reset()
+        populateValidParams(params)
+        def user = new User(params)
+        user.springSecurityService = sprSecSrv
+        user.save(flush: true)
+        controller.update(user)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/user/show/$user.id"
-            flash.message != null
+        System.out.println(response)
+        response.redirectUrl == "/user/show/"+user.id
+        response.redirectedUrl == "/user/show/"+user.id
+        flash.message != null
     }
 
     void "Test that the delete action deletes an instance if it exists"() {
