@@ -42,17 +42,25 @@
 		                <span class="icon-bar"></span>
 		                <span class="icon-bar"></span>
 		            </button>
-		            <a class="navbar-brand" href="${createLink(uri: '/')}">TEND<i class="fa fa-circle"></i>SS</a>
+		            <a class="navbar-brand">TEND<i class="fa fa-circle"></i>SS</a>
 		        </div>
 		        <div class="navbar-collapse collapse">
 		            <ul class="nav navbar-nav navbar-right">
+		            	<li class="active"><a href="${createLink(uri: '/')}">HOME</a></li>
 		                <sec:ifLoggedIn>
-		                    <li class="active"><a href="#">WELCOME <font style="text-transform: uppercase;"><sec:username/></font></a></li>
-		                    <li><a href="${createLink(controller: 'logout')}">LOGOUT</a></li>
-		                    <li><a href="${createLink(controller: 'user', action: 'edit', id: sec.loggedInUserInfo(field: 'id'))}">EDIT PROFILE</a></li>
+		                    <li class="dropdown">
+		                    	<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+		                    		<font style="text-transform: uppercase;"><sec:username/></font> <b class="caret"></b>
+		                    	</a>
+		                    	<ul class="dropdown-menu">
+		                    		<li><a href="${createLink(controller: 'user', action: 'edit', id: sec.loggedInUserInfo(field: 'id'))}">ACCOUNT</a></li>
+		                    		<li class="divider"></li>
+		                    		<li><a href="${createLink(controller: 'logout')}">LOGOUT</a></li>
+		                    	</ul>
+		                    </li>
 		                </sec:ifLoggedIn>
 		                <sec:ifNotLoggedIn>
-		                    <li class="active"><a data-toggle="modal" data-target="#myModal" href="#myModal">LOGIN</a></li>
+		                    <li><a data-toggle="modal" data-target="#myModal" href="#myModal">LOGIN</a></li>
 		                    <li><a href="#signUp">SIGN UP</a></li>
 		                </sec:ifNotLoggedIn>
 		            </ul>
