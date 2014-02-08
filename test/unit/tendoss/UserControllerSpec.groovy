@@ -130,8 +130,8 @@ class UserControllerSpec extends Specification {
         controller.update(user)
 
         then:"A redirect is issues to the show action"
-        System.out.println(response)
-        response.redirectUrl == "/user/show/"+user.id
+        println '----------------------------->' + response
+        response.redirectedUrl == "/user/show/"+user.id
         response.redirectedUrl == "/user/show/"+user.id
         flash.message != null
     }
