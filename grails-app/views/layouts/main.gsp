@@ -62,13 +62,23 @@
 		
 		<g:layoutBody/>
 		
-		<!-- COPYRIGHT SECTION -->
+		<!-- ABOUT SECTION -->
 		<div id="r">
 			<div class="container">
 				<div class="row centered">
 					<div class="col-lg-8 col-lg-offset-2">
-						<h4>Copyright © TendOSS, 2014</h4>
+						<h4>WE ARE THE STEWARDS OF THE OPEN SOURCE DEFINITION.</h4>
+						<p>The Open Source Initiative (OSI) is a non-profit corporation with global scope formed to educate about and advocate for the benefits of open source and to build bridges among different constituencies in the open source community.</p>
 					</div>
+				</div><!-- row -->
+			</div><!-- container -->
+		</div>
+		
+		<!-- COPYRIGHT SECTION -->
+		<div id="f">
+			<div class="container">
+				<div class="row centered">
+					<p style="color: white">Copyright © TendOSS, 2014</p>
 				</div>
 			</div>
 		</div>
