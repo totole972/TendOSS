@@ -37,48 +37,6 @@ class AnswerController {
         respond answerInstance
     }
 
-    @Transactional
-    def update(Answer answerInstance) {
-        if (answerInstance == null) {
-            notFound()
-            return
-        }
-
-        if (answerInstance.hasErrors()) {
-            respond answerInstance.errors, view: 'edit'
-            return
-        }
-
-        answerInstance.save flush: true
-
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Answer.label', default: 'Answer'), answerInstance.id])
-                redirect answerInstance
-            }
-            '*' { respond answerInstance, [status: OK] }
-        }
-    }
-
-    @Transactional
-    def delete(Answer answerInstance) {
-
-        if (answerInstance == null) {
-            notFound()
-            return
-        }
-
-        answerInstance.delete flush: true
-
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Answer.label', default: 'Answer'), answerInstance.id])
-                redirect action: "index", method: "GET"
-            }
-            '*' { render status: NO_CONTENT }
-        }
-    }
-
     protected void notFound() {
         request.withFormat {
             form {

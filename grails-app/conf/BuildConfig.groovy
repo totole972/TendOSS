@@ -80,6 +80,7 @@ grails.project.dependency.resolution = {
     }
 }
 coverage {
+    html = true
     xml = true
     exclusions = ["**/*Tests*"]
 }

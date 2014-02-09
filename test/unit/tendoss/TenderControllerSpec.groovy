@@ -5,7 +5,7 @@ import grails.test.mixin.TestFor
 import spock.lang.Specification
 
 @TestFor(TenderController)
-@Mock(Tender)
+@Mock([Tender,VoteService])
 class TenderControllerSpec extends Specification {
 
     def populateValidParams(params) {

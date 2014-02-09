@@ -50,20 +50,18 @@
 		                <sec:ifLoggedIn>
                             <li><a href="${createLink(controller: 'tender')}"><g:message code="tender.list"></g:message> </a></li>
 		                    <li class="dropdown">
-		                    	<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+		                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		                    		<font style="text-transform: uppercase;"><sec:username/></font> <b class="caret"></b>
 		                    	</a>
 		                    	<ul class="dropdown-menu">
-		                    		<li><a href="${createLink(controller: 'user', action: 'edit', id: sec.loggedInUserInfo(field: 'id'))}">ACCOUNT</a></li>
+		                    		<li><g:link controller="user" action="edit" id="${sec.loggedInUserInfo(field: 'id')}">ACCOUNT</g:link></li>
 		                    		<li class="divider"></li>
-		                    		<li><a href="${createLink(controller: 'logout')}">LOGOUT</a></li>
-
+		                    		<li><g:link controller="logout">LOGOUT</g:link></li>
 		                    	</ul>
 		                    </li>
 		                </sec:ifLoggedIn>
 		                <sec:ifNotLoggedIn>
-		                    <li><a data-toggle="modal" data-target="#myModal" href="#myModal">LOGIN</a></li>
-		                    <li><a href="#signUp">SIGN UP</a></li>
+		                	<li><g:link controller="login" action="auth">SIGN IN</g:link></li>
 		                </sec:ifNotLoggedIn>
 		            </ul>
 		        </div>
@@ -89,32 +87,6 @@
 			<div class="container">
 				<div class="row centered">
 					<p style="color: white">Copyright © TendOSS, 2014</p>
-				</div>
-			</div>
-		</div>
-		
-		<!-- MODAL FOR LOGIN -->
-		<!-- Modal -->
-		<div class="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">Sign in</h4>
-					</div>
-					<g:form controller="j_spring_security_check" method="POST">
-						<div class="modal-body">
-							<div class="form-group">
-								<input type="text" class="form-control" name="j_username" id="j_username" placeholder="Enter your username">
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" name="j_password" id="j_password" placeholder="Enter your password">
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-danger">Connexion</button>
-						</div>
-					</g:form>
 				</div>
 			</div>
 		</div>

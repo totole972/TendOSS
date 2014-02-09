@@ -2,6 +2,7 @@ package tendoss
 
 import grails.transaction.Transactional
 import groovy.sql.Sql
+import javax.sql.DataSource
 
 @Transactional
 class VoteService {

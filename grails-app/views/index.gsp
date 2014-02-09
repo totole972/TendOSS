@@ -6,12 +6,21 @@
 	<body>
 		<!-- HEADER SECTION -->
 		<div id="headerwrap">
-			<div class="container">
-				<div class="row centered">
-					<div class="col-lg-8 col-lg-offset-2">
-						<h1>Be part of the <b>Open Source Initiative</b></h1>
-						<h2>Grow Up and Join Us</h2>
-					</div>
+			<div class="container wb" style="padding-top: 25px;">
+				<h2>Join TendOSS today</h2>
+				<br><br>
+				<div class="col-lg-6 col-lg-offset-3">
+					<g:form controller="user" action="save">
+						<fieldset>
+							<label style="color: white;" for="username">Pick a username</label>
+							<input type="text" class="form-control" name="username" id="username" required autofocus><br>
+							<label style="color: white;" for="emailAddress">Email address</label>
+							<input type="text" class="form-control" name="emailAddress" id="emailAddress" required><br>
+							<label style="color: white;" for="password">Create a password</label>
+							<input type="password" class="form-control" name="password" id="password" required>
+							<br><button type="submit" class="btn btn-lg btn-warning btn-block">Create my account</button>
+						</fieldset>
+					</g:form>
 				</div>
 			</div>
 		</div>
@@ -28,19 +37,6 @@
 				<div class="col-lg-2"></div>
 				<div class="col-lg-10 col-lg-offset-1">
 					<img class="img-responsive" src="images/munter.png" alt="">
-				</div>
-			</div>
-		</div>
-		
-		<!-- SIGN UP SECTION -->
-		<div id="dg">
-			<div id="signUp" class="container wb">
-				<div class="row centered">
-					<br><br>
-					<div class="col-lg-8 col-lg-offset-2">
-						<h4>CREATE AN ACCOUNT</h4>
-						<p>TO DO</p>
-					</div>
 				</div>
 			</div>
 		</div>
