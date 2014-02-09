@@ -42,17 +42,25 @@
 		                <span class="icon-bar"></span>
 		                <span class="icon-bar"></span>
 		            </button>
-		            <a class="navbar-brand" href="${createLink(uri: '/')}">TEND<i class="fa fa-circle"></i>SS</a>
+		            <a class="navbar-brand">TEND<i class="fa fa-circle"></i>SS</a>
 		        </div>
 		        <div class="navbar-collapse collapse">
 		            <ul class="nav navbar-nav navbar-right">
+		            	<li class="active"><a href="${createLink(uri: '/')}">HOME</a></li>
 		                <sec:ifLoggedIn>
-		                    <li class="active"><a href="#">WELCOME <font style="text-transform: uppercase;"><sec:username/></font></a></li>
-		                    <li><a href="${createLink(controller: 'logout')}">LOGOUT</a></li>
-		                    <li><a href="${createLink(controller: 'user', action: 'edit', id: sec.loggedInUserInfo(field: 'id'))}">EDIT PROFILE</a></li>
+		                    <li class="dropdown">
+		                    	<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+		                    		<font style="text-transform: uppercase;"><sec:username/></font> <b class="caret"></b>
+		                    	</a>
+		                    	<ul class="dropdown-menu">
+		                    		<li><a href="${createLink(controller: 'user', action: 'edit', id: sec.loggedInUserInfo(field: 'id'))}">ACCOUNT</a></li>
+		                    		<li class="divider"></li>
+		                    		<li><a href="${createLink(controller: 'logout')}">LOGOUT</a></li>
+		                    	</ul>
+		                    </li>
 		                </sec:ifLoggedIn>
 		                <sec:ifNotLoggedIn>
-		                    <li class="active"><a data-toggle="modal" data-target="#myModal" href="#myModal">LOGIN</a></li>
+		                    <li><a data-toggle="modal" data-target="#myModal" href="#myModal">LOGIN</a></li>
 		                    <li><a href="#signUp">SIGN UP</a></li>
 		                </sec:ifNotLoggedIn>
 		            </ul>
@@ -62,13 +70,23 @@
 		
 		<g:layoutBody/>
 		
-		<!-- COPYRIGHT SECTION -->
+		<!-- ABOUT SECTION -->
 		<div id="r">
 			<div class="container">
 				<div class="row centered">
 					<div class="col-lg-8 col-lg-offset-2">
-						<h4>Copyright © TendOSS, 2014</h4>
+						<h4>WE ARE THE STEWARDS OF THE OPEN SOURCE DEFINITION.</h4>
+						<p>The Open Source Initiative (OSI) is a non-profit corporation with global scope formed to educate about and advocate for the benefits of open source and to build bridges among different constituencies in the open source community.</p>
 					</div>
+				</div><!-- row -->
+			</div><!-- container -->
+		</div>
+		
+		<!-- COPYRIGHT SECTION -->
+		<div id="f">
+			<div class="container">
+				<div class="row centered">
+					<p style="color: white">Copyright © TendOSS, 2014</p>
 				</div>
 			</div>
 		</div>

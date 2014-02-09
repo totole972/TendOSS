@@ -16,35 +16,20 @@
 			</div>
 		</div>
 		
-		<!-- WEB APPLICATION SECTION -->
-		<div class="container w">
+		<!-- OPEN SOURCE INITIATIVE SECTION -->
+		<div class="container wb">
 			<div class="row centered">
 				<br><br>
-				<div class="col-lg-4">
-					<i class="fa fa-laptop"></i>
-					<h4>APPLICATION STATUS</h4>
-					<ul>
-						<li>App version: <g:meta name="app.version"/></li>
-						<li>Grails version: <g:meta name="app.grails.version"/></li>
-						<li>Groovy version: ${GroovySystem.getVersion()}</li>
-						<li>JVM version: ${System.getProperty('java.version')}</li>
-						<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-						<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-						<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-						<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-						<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-					</ul>
+				<div class="col-lg-8 col-lg-offset-2">
+					<h4>THE OPEN SOURCE INITIATIVE</h4>
+					<p>Open source software is software that can be freely used, changed, and shared (in modified or unmodified form) by anyone. Open source software is made by many people, and distributed under <a href="http://opensource.org/licenses">licenses</a> that comply with the <a href="http://opensource.org/definition">Open Source Definition</a>.</p>
+				<p><br/><br/></p>
 				</div>
-				<div class="col-lg-4">
-					<i class="fa fa-laptop"></i>
-					<h4>INSTALLED PLUGINS</h4>
-					<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-						<li>${plugin.name} - ${plugin.version}</li>
-					</g:each>
+				<div class="col-lg-2"></div>
+				<div class="col-lg-10 col-lg-offset-1">
+					<img class="img-responsive" src="images/munter.png" alt="">
 				</div>
 			</div>
-			<br>
-			<br>
 		</div>
 		
 		<!-- SIGN UP SECTION -->

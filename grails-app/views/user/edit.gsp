@@ -34,9 +34,9 @@
                         <g:render template="personnalform" />
                     </div>
                     <g:render template="tendform"/>
-				</fieldset>
-				<fieldset class="buttons" style="border: 0px none">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+                    <fieldset class="buttons" style="border: 0px none">
+                        <g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+                    </fieldset>
 				</fieldset>
 			</g:form>
 		</div>
