@@ -74,5 +74,21 @@ grails.project.dependency.resolution = {
 
         test ":spock:0.7"
         test ":code-coverage:1.2.7"
+        compile ":codenarc:0.20"
+
+
+    }
+}
+coverage {
+    xml = true
+    exclusions = ["**/*Tests*"]
+}
+
+codenarc {
+    reports = {
+        MyReport('xml') {                    // The report name "MyXmlReport" is user-defined; Report type is 'xml'
+            outputFile = 'target/codenarc.xml'      // Set the 'outputFile' property of the (XML) Report
+            title = 'TendOSS Report'             // Set the 'title' property of the (XML) Report
+        }
     }
 }
