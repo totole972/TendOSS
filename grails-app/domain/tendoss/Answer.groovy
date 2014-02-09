@@ -7,7 +7,7 @@ class Answer {
     Date answerDate = new Date()
 
     static belongsTo = [author: User]
-    static hasMany = [attachements: File, answers: Answer, votes: Vote]
+    static hasMany = [attachements: File, votes: Vote]
 
     static mapping = {
         version(false)
