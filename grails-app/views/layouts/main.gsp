@@ -60,7 +60,6 @@
 		                    </li>
 		                </sec:ifLoggedIn>
 		                <sec:ifNotLoggedIn>
-		                	<li><a href="#signUp">SIGN UP</a></li>
 		                	<li><g:link controller="login" action="auth">SIGN IN</g:link></li>
 		                </sec:ifNotLoggedIn>
 		            </ul>
