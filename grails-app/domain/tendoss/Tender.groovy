@@ -11,13 +11,13 @@ class Tender {
     Boolean closed = false
 
     static belongsTo = [postOwner: User]
-    static hasMany = [answers: Answer, attachements: File, requirements: TenderTechno]
+    static hasMany = [answers: Answer, attachements: File, requirements: TenderTechno, votes: Vote]
 
     static constraints = {
         name blank: false, unique: true, maxSize: 256
 		description blank: false
 		answerDeadline min: new Date() + 6
-        votes unique: true
+        votes nullable: true
     }
 
     static mapping = {
