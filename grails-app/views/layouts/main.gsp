@@ -48,6 +48,7 @@
 		            <ul class="nav navbar-nav navbar-right">
 		            	<li class="active"><a href="${createLink(uri: '/')}">HOME</a></li>
 		                <sec:ifLoggedIn>
+                            <li><a href="${createLink(controller: 'tender')}"><g:message code="tender.list"></g:message> </a></li>
 		                    <li class="dropdown">
 		                    	<a class="dropdown-toggle" href="#" data-toggle="dropdown">
 		                    		<font style="text-transform: uppercase;"><sec:username/></font> <b class="caret"></b>
@@ -56,6 +57,7 @@
 		                    		<li><a href="${createLink(controller: 'user', action: 'edit', id: sec.loggedInUserInfo(field: 'id'))}">ACCOUNT</a></li>
 		                    		<li class="divider"></li>
 		                    		<li><a href="${createLink(controller: 'logout')}">LOGOUT</a></li>
+
 		                    	</ul>
 		                    </li>
 		                </sec:ifLoggedIn>
