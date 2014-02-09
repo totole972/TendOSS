@@ -8,6 +8,7 @@ import static org.springframework.http.HttpStatus.*
 class TenderController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    def voteService
 
     def index() {
        params.sort = "submissionDate"
@@ -17,7 +18,7 @@ class TenderController {
  			closed == false
  		}
  		
-        respond query.list(params), model:[tenderInstanceCount: Tender.count()]
+        respond query.list(params), model:[tenderInstanceCount: Tender.count(), bestTenders: voteService.getBestTenders()]
     }
 
     def show(Tender tenderInstance) {
