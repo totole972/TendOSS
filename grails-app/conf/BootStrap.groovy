@@ -66,7 +66,14 @@ class BootStrap {
 		// tender
 		def storedTender = new Tender(name: 'Test tender', description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', answerDeadline:new Date() + 31, closed: false)		
 		storedTender.postOwner = julienUser
+        storedTender.addToVotes(new Vote(voter: stdUser, vote: 1))
+        storedTender.addToVotes(new Vote(voter: adminUser, vote: -1))
 		storedTender.save()
+        def storedTender2 = new Tender(name: 'Test tender2', description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', answerDeadline:new Date() + 365, closed: false)
+        storedTender2.postOwner = stdUser
+        storedTender2.addToVotes(new Vote(voter: julienUser, vote: 1))
+        storedTender2.addToVotes(new Vote(voter: adminUser, vote: -1))
+        storedTender2.save()
 		def tenderTechnoJava = new TenderTechno(minimalLevel: intermedaire, techno:technoJava, tender:storedTender)
 		def tenderTechnoUml = new TenderTechno(minimalLevel: deb, techno:technoUml, tender:storedTender)
 		tenderTechnoJava.save()
