@@ -57,14 +57,17 @@
 			
 			</div>
 			
-			<hr />				
-		
+			<hr />
+            <sec:ifLoggedIn>
+		        <g:render template="/answer/form"></g:render>
+            </sec:ifLoggedIn>
+            <sec:ifNotLoggedIn>
+                You must be logged In to post an answer
+            </sec:ifNotLoggedIn>
 			<h2>Answers</h2>
 				<g:if test="${tenderInstance?.answers}">
-				<li class="fieldcontain">					
-					<g:each in="${tenderInstance.answers}" var="a">
-					<span class="property-value" aria-labelledby="answers-label"><g:link controller="answer" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
-					</g:each>
+				<li class="fieldcontain">
+                    <g:render template="/answer/show"  model="${tenderInstance.answers}"></g:render>
 				</li>
 				</g:if>
 				<g:else>

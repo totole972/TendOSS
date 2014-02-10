@@ -20,7 +20,6 @@ class TechnoServiceSpec extends Specification {
     void "test insertion"() {
         when:"adding a techno"
         def ret = service.create(libelle,description)
-        print ret
 
         then:"assert techno is in base"
         def t = Techno.findByLibelle(libelle)

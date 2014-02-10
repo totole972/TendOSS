@@ -15,7 +15,8 @@ class TechnoController {
 
         technoService.create(lib, desc)
 
-        def user = User.get((long)((GrailsUser)springSecurityService.authentication.getPrincipal()).getId())
+        //def user = User.get((long)((GrailsUser)springSecurityService.authentication.getPrincipal()).getId())
+        def user = springSecurityService.currentUser
         redirect(controller:"User",action:"_personnalform", params:[userInstance: user.id])
     }
 }

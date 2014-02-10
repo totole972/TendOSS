@@ -1,12 +1,9 @@
 package tendoss
 
 class Vote {
-
-    Boolean up = false
-
-    static belongsTo = [Voter: User]
-
+    int vote
+    User voter
     static constraints = {
-        up(nullable: false, blank: false)
+        vote(nullable: false, inList: [-1,1], blank: false)
     }
 }
