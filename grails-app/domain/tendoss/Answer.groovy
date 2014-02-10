@@ -11,9 +11,11 @@ class Answer {
 
     static mapping = {
         version(false)
+        sort answerDate: "asc" // or "asc"
     }
 
     static constraints = {
 		content blank: false
+
     }
 }
