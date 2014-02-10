@@ -23,6 +23,7 @@ class Tender {
     static mapping = {
         version(false)
 		description type: "text"
+        answers sort: "answerDate", order:"asc"
     }
 
 	
