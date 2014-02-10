@@ -136,9 +136,3 @@ grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/'
 
 
 grails.views.gsp.encoding="UTF-8"
-
-codenarc {
-    reportName = 'target/codenarc.xml'
-    reportType = 'xml'
-    // any further settings like maxPriority1Violations=0
-}
