@@ -10,7 +10,7 @@
 				<h2>Join TendOSS today</h2>
 				<br><br>
 				<div class="col-lg-6 col-lg-offset-3">
-					<g:form controller="user" action="subscribe">
+					<g:form controller="user" action="save">
 						<fieldset>
 							<label style="color: white;" for="username">Pick a username</label>
 							<input type="text" class="form-control" name="username" id="username" required autofocus><br>
