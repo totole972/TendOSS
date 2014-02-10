@@ -1,6 +1,7 @@
 package tendoss
 
 import grails.transaction.Transactional
+import tendoss.Role.RoleEnum
 
 import static org.springframework.http.HttpStatus.*
 
@@ -8,6 +9,8 @@ import static org.springframework.http.HttpStatus.*
 class UserController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+	
+	UserService userService
 
     /**
      * show list of Created Users
@@ -113,4 +116,13 @@ class UserController {
     def _personnalform(User userInstance){
         respond User.get(params.userInstance)
     }
+	
+	def subscribe() {
+		User user = userService.addUser(new User(params), RoleEnum.USER_ROLE.role)
+		if (user.hasErrors()) {
+			render view: '/index', model: [user: user]
+		} else {
+			redirect controller: 'login', action: 'auth'
+		}
+	}
 }
