@@ -31,18 +31,4 @@ class Tender {
     String getLightDescription() {
 		description.take(127) + "..."
     }
-
-    static Comparator getComparator() {
-        def c =[
-                compare: { a, b ->
-                    def resa = a.votes?.sum()?:0
-                    def resb = b.votes?.sum()?:0
-                    def result = resa <=> resb
-                    if( result == 0 ) {
-                        result = a.name <=> b.name
-                    }
-                    return result
-                }
-        ] as Comparator
-    }
 }
