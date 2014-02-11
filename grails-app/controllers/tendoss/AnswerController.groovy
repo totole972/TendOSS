@@ -33,8 +33,41 @@ class AnswerController {
         redirect(controller: "tender", action: "show" , params : [id: tender.id])
     }
 
-    def edit(Answer answerInstance) {
-        respond answerInstance
+    def edit() {
+        def hasError = false
+        def redirection = [controller: "tender", action: "show" , params : [id: params?.tenderId?.toLong()]]
+        flash.error = []
+        if(!params.answerId){
+            flash.error << "Aucune réponse passée en paramètre"
+           hasError = true
+        }
+        if(!hasError){
+            if(!params.tenderId){
+                hasError = true
+                flash.error << "Aucun tender passé en paramètre"
+            }
+            else{
+                if(!params.content || params.content == null || params.content =="" ){
+                    hasError =true
+                    flash.error << "Le contenu de la réponse ne peut être vide"
+                }else{
+                    def currentUser = springSecurityService.currentUser as User
+                    def answer = Answer.get(params.long("answerId"))
+                    if(currentUser.id != answer.author.id){
+                        hasError = true
+                        flash.error << "Vous n'êtes pas l'auteur de cette réponse"
+                    }else{
+                        answer.content = params.content
+                        answer.save(flush: true)
+                    }
+                }
+            }
+        }
+        if(hasError){
+            redirection = [controller: "tender", action: "index"]
+        }
+        redirect redirection
+        return
     }
 
     protected void notFound() {

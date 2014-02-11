@@ -68,4 +68,17 @@ class TechnoSpec extends Specification {
         t2.validate() == false
 
     }
+
+
+    void "test to string"() {
+        when:
+        def desc ='aaaa'
+
+        def t1 = new Techno(libelle: 'python',description:desc)
+        t1.save(flush: true)
+
+        then:
+        t1.toString() == 'python' + ' : ' + desc
+
+    }
 }
