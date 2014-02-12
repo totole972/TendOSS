@@ -2,9 +2,7 @@ package tendoss
 
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.SpringSecurityUtils
-import org.springframework.security.core.context.SecurityContextHolder
 import spock.lang.Specification
-import spock.lang.Unroll
 import tendoss.test.IntegrationTestInit
 
 class VoteServiceIntegrationSpec extends Specification {
@@ -41,7 +39,7 @@ class VoteServiceIntegrationSpec extends Specification {
        }
        then :
         voteService.calculateScore("answer",1) == score + 1
-        voteService.calculateScore("answer",2) == score - 1
+        voteService.calculateScore("answer",2) == score2 - 1
         return1.message == "OK"
         return2.message == "OK"
 

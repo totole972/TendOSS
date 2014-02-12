@@ -1,10 +1,6 @@
 package tendoss
 
 import grails.transaction.Transactional
-import groovy.sql.Sql
-import org.hibernate.criterion.CriteriaSpecification
-
-import javax.sql.DataSource
 
 @Transactional
 class VoteService {
